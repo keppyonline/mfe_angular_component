@@ -3,5 +3,438 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "host": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/host",
+      "sourceRoot": "projects/host/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/host",
+            "index": "projects/host/src/index.html",
+            "main": "projects/host/src/main.ts",
+            "polyfills": "projects/host/src/polyfills.ts",
+            "tsConfig": "projects/host/tsconfig.app.json",
+            "assets": [
+              "projects/host/src/favicon.ico",
+              "projects/host/src/assets"
+            ],
+            "styles": [
+              "projects/host/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/host/webpack.config.js",
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/host/src/environments/environment.ts",
+                  "with": "projects/host/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/host/webpack.prod.config.js"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "host:build:production",
+              "extraWebpackConfig": "projects/host/webpack.prod.config.js"
+            },
+            "development": {
+              "browserTarget": "host:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/host/webpack.config.js",
+            "port": 4200
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "host:build",
+            "extraWebpackConfig": "projects/host/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "projects/host/src/test.ts",
+            "polyfills": "projects/host/src/polyfills.ts",
+            "tsConfig": "projects/host/tsconfig.spec.json",
+            "karmaConfig": "projects/host/karma.conf.js",
+            "assets": [
+              "projects/host/src/favicon.ico",
+              "projects/host/src/assets"
+            ],
+            "styles": [
+              "projects/host/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/host/webpack.config.js"
+          }
+        }
+      }
+    },
+    "mfe1": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/mfe1",
+      "sourceRoot": "projects/mfe1/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/mfe1",
+            "index": "projects/mfe1/src/index.html",
+            "main": "projects/mfe1/src/main.ts",
+            "polyfills": "projects/mfe1/src/polyfills.ts",
+            "tsConfig": "projects/mfe1/tsconfig.app.json",
+            "assets": [
+              "projects/mfe1/src/favicon.ico",
+              "projects/mfe1/src/assets"
+            ],
+            "styles": [
+              "projects/mfe1/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/mfe1/webpack.config.js",
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/mfe1/src/environments/environment.ts",
+                  "with": "projects/mfe1/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/mfe1/webpack.prod.config.js"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "mfe1:build:production",
+              "extraWebpackConfig": "projects/mfe1/webpack.prod.config.js"
+            },
+            "development": {
+              "browserTarget": "mfe1:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/mfe1/webpack.config.js",
+            "port": 58995
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "mfe1:build",
+            "extraWebpackConfig": "projects/mfe1/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "projects/mfe1/src/test.ts",
+            "polyfills": "projects/mfe1/src/polyfills.ts",
+            "tsConfig": "projects/mfe1/tsconfig.spec.json",
+            "karmaConfig": "projects/mfe1/karma.conf.js",
+            "assets": [
+              "projects/mfe1/src/favicon.ico",
+              "projects/mfe1/src/assets"
+            ],
+            "styles": [
+              "projects/mfe1/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/mfe1/webpack.config.js"
+          }
+        }
+      }
+    },
+    "mfe-enquiry": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/mfe-enquiry",
+      "sourceRoot": "projects/mfe-enquiry/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/mfe-enquiry",
+            "index": "projects/mfe-enquiry/src/index.html",
+            "main": "projects/mfe-enquiry/src/main.ts",
+            "polyfills": "projects/mfe-enquiry/src/polyfills.ts",
+            "tsConfig": "projects/mfe-enquiry/tsconfig.app.json",
+            "assets": [
+              "projects/mfe-enquiry/src/favicon.ico",
+              "projects/mfe-enquiry/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-enquiry/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/mfe-enquiry/webpack.config.js",
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/mfe-enquiry/src/environments/environment.ts",
+                  "with": "projects/mfe-enquiry/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/mfe-enquiry/webpack.prod.config.js"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "mfe-enquiry:build:production",
+              "extraWebpackConfig": "projects/mfe-enquiry/webpack.prod.config.js"
+            },
+            "development": {
+              "browserTarget": "mfe-enquiry:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/mfe-enquiry/webpack.config.js",
+            "port": 5000
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "mfe-enquiry:build",
+            "extraWebpackConfig": "projects/mfe-enquiry/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "projects/mfe-enquiry/src/test.ts",
+            "polyfills": "projects/mfe-enquiry/src/polyfills.ts",
+            "tsConfig": "projects/mfe-enquiry/tsconfig.spec.json",
+            "karmaConfig": "projects/mfe-enquiry/karma.conf.js",
+            "assets": [
+              "projects/mfe-enquiry/src/favicon.ico",
+              "projects/mfe-enquiry/src/assets"
+            ],
+            "styles": [
+              "projects/mfe-enquiry/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/mfe-enquiry/webpack.config.js"
+          }
+        }
+      }
+    },
+    "enquiryapp": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/enquiryapp",
+      "sourceRoot": "projects/enquiryapp/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/enquiryapp",
+            "index": "projects/enquiryapp/src/index.html",
+            "main": "projects/enquiryapp/src/main.ts",
+            "polyfills": "projects/enquiryapp/src/polyfills.ts",
+            "tsConfig": "projects/enquiryapp/tsconfig.app.json",
+            "assets": [
+              "projects/enquiryapp/src/favicon.ico",
+              "projects/enquiryapp/src/assets"
+            ],
+            "styles": [
+              "projects/enquiryapp/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/enquiryapp/webpack.config.js",
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/enquiryapp/src/environments/environment.ts",
+                  "with": "projects/enquiryapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/enquiryapp/webpack.prod.config.js"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "enquiryapp:build:production",
+              "extraWebpackConfig": "projects/enquiryapp/webpack.prod.config.js"
+            },
+            "development": {
+              "browserTarget": "enquiryapp:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/enquiryapp/webpack.config.js",
+            "port": 5000
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "enquiryapp:build",
+            "extraWebpackConfig": "projects/enquiryapp/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "projects/enquiryapp/src/test.ts",
+            "polyfills": "projects/enquiryapp/src/polyfills.ts",
+            "tsConfig": "projects/enquiryapp/tsconfig.spec.json",
+            "karmaConfig": "projects/enquiryapp/karma.conf.js",
+            "assets": [
+              "projects/enquiryapp/src/favicon.ico",
+              "projects/enquiryapp/src/assets"
+            ],
+            "styles": [
+              "projects/enquiryapp/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/enquiryapp/webpack.config.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "host"
 }

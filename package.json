@@ -6,10 +6,16 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
+  "resolutions": {
+    "webpack": "^5.4.0",
+    "license-webpack-plugin": "2.3.17"
+  },
   "dependencies": {
+    "@angular-architects/module-federation": "^12.4.0",
     "@angular/animations": "~12.1.1",
     "@angular/common": "~12.1.1",
     "@angular/compiler": "~12.1.1",
@@ -23,6 +29,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~12.1.4",
     "@angular/cli": "~12.1.1",
     "@angular/compiler-cli": "~12.1.1",
     "@types/jasmine": "~3.6.0",
